@@ -1,5 +1,0 @@
-# sprintboot
-
-aaaa
-
-adfasdfasdf
