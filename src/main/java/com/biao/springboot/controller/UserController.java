@@ -1,13 +1,13 @@
 package com.biao.springboot.controller;
 
+import com.biao.springboot.dao.DepartmentDao;
 import com.biao.springboot.dao.EmployeeDao;
+import com.biao.springboot.entities.Department;
 import com.biao.springboot.entities.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.util.Collection;
@@ -15,18 +15,6 @@ import java.util.Map;
 
 @Controller
 public class UserController {
-
-    @Autowired
-    private EmployeeDao employeeDao;
-
-    @GetMapping("/emps")
-    public String getAllEmps(Map<String,Object> map){
-        Collection<Employee> employees = employeeDao.getAll();
-        map.put("emps",employees);
-        return "list";
-    }
-
-
 
     @PostMapping(value = "/user/login")
     public String login(@RequestParam("userName") String userName,
