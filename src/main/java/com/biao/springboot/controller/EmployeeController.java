@@ -4,6 +4,7 @@ import com.biao.springboot.dao.DepartmentDao;
 import com.biao.springboot.dao.EmployeeDao;
 import com.biao.springboot.entities.Department;
 import com.biao.springboot.entities.Employee;
+import com.biao.springboot.mapper.EmployeeMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,16 @@ public class EmployeeController {
     private EmployeeDao employeeDao;
     @Autowired
     private DepartmentDao departmentDao;
+    @Autowired
+    private EmployeeMapper employeeMapper;
+
+    @GetMapping("/getEmpById/{id}")
+    @ResponseBody
+    public com.biao.springboot.bean.Employee getEmpById(@PathVariable("id") Integer id){
+        com.biao.springboot.bean.Employee emp = employeeMapper.getEmpById(id);
+        return emp;
+    }
+
 
     //添加员工页面
     @GetMapping("/emp")
